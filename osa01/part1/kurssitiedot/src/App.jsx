@@ -1,57 +1,65 @@
 const Header = (props) => {
+  console.log("Header props: ", props)
   return (
     <div>
-      <p> {props.course} </p>
+      <p>{props.course}</p>
     </div>
-    )  
+  )
 }
 
 const Part = (props) => {
+  console.log("Part props: ", props)
   return (
     <div>
-      <p> {props.part} {props.exercises} </p>
+      <p>{props.part.name} {props.part.exercises}</p>
     </div>
-    )
+  )
 }
 
 const Content = (props) => {
-  console.log("all parts: ", props)
   return (
     <div>
-      <Part part={props.parts[0].part} exercises={props.parts[0].exercises} />
-      <Part part={props.parts[1].part} exercises={props.parts[1].exercises} />
-      <Part part={props.parts[2].part} exercises={props.parts[2].exercises} />
+      <Part part={props.parts[0]} />
+      <Part part={props.parts[1]} />
+      <Part part={props.parts[2]} />
     </div>
   )
 }
 
-// const Content = (props) => {
-//   return (
-//     <div>
-//       <p> {props.part} </p>
-//     </div>
-//     )  
-// }
-
 const Total = (props) => {
-  return(
-  <div>
-    <p> Number of exercises: {props.total}</p>
-  </div>
-  )
-}
-const App = () => {
-  // const-määrittelyt
-  const course = 'Half Stack application development'
-  const info = [{part: 'Fundamentals of React', exercises: 10},
-    {part: 'Using props to pass data', exercises: 7},
-    {part: 'State of a component', exercises: 14}
-    ]
+  const totalExercises = props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises
   return (
     <div>
-      <Header course={course} />
-      <Content parts= {info}/>
-      <Total total= {info[0].exercises + info[1].exercises + info[2].exercises} />
+      <p>Number of exercises: {totalExercises}</p>
+    </div>
+  )
+}
+
+const App = () => {
+  // const-määrittelyt
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+  console.log("Kurssi: ", course)
+  return (
+    <div>
+      <Header course={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   )
 }
