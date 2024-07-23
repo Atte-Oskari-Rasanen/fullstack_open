@@ -1,23 +1,34 @@
-const Hello = (props) => {
+import { useState } from 'react'
+
+const Display = (props) => {
   return (
-  <div>
-    <p> Moi moi {props.name} :), olet jo {props.age} vuotta vanha! </p>
-  </div>
+    <div>{props.counter}</div>
   )
 }
 
+const Nappi = (props) => {
+  return (
+    <button onClick={props.handleClick}>
+      {props.text}
+    </button>
+  )
+}
 const App = () => {
-  const friends = [
-    {name: 'ABC', age: '10'},
-    {name: 'DEF', age: '12'}
-  ]
+  const [ counter, setCounter ] = useState(0)
+
+  const nostaYhdella = () => setCounter(counter + 1)
+  const laskeYhdella = () => setCounter(counter - 1)
+  const Nollaa = () => setCounter(0)
+  console.log('rendering...', counter)
+
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name= "Atte" age= "100" />
-      <Hello name= "Mikko" age = "1.5" />
-      <p> Moi kaverit: {friends[0].name} ja {friends[1].name}</p>
+    <Display counter={counter}/>
+    <Nappi handleClick={nostaYhdella} text = '+' />
+    <Nappi handleClick={laskeYhdella} text = '-' />
+    <Nappi handleClick={Nollaa} text = '0' />
     </div>
   )
 }
+
 export default App
