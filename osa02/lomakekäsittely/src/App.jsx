@@ -6,6 +6,7 @@ const App = (props) => {
 
 
   const addNote = (event) => {
+    console.log("event: ", event)
     event.preventDefault()
     console.log('button clicked', event.target)
   }
@@ -22,7 +23,8 @@ const App = (props) => {
       <form onSubmit={addNote}>
         <input />
         <button type="submit">save</button>
-      </form>   
+      </form>
     </div>
   )
-}
+};
+export default App;

@@ -99,7 +99,6 @@ const App = () => {
       <Button handleClick={handleGood} text='Good' />
       <Button handleClick={handleBad} text='Bad' />
       <Button handleClick={handleNeutral} text='Neutral' />
-      <Button handleClick={handleNeutral} text='Next anecdote' />
       <h2>Statistics</h2>
       <Statistics good={good} neutral={neutral} bad={bad} allRatings={allRatings} />
       <Button handleClick={handleNextAnecdote} text='Next anecdote' />
